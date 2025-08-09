@@ -17,4 +17,20 @@ def load_data(path:str):
     return imgs, greys
 
 # feature detection
-load_data('Image Stitching/data/raw')
+def detectAndDescribe(image, method=None):
+    assert method is not None, "You need to define a feature detection method. Values are: 'sift', 'surf'"
+    # detect and extract features from the image
+    if method == 'sift':
+        descriptor = cv2.SIFT_create()
+    elif method == 'surf':
+        descriptor = cv2.SURF_create()
+    elif method == 'brisk':
+        descriptor = cv2.BRISK_create()
+    elif method == 'orb':
+        descriptor = cv2.ORB_create()
+    elif method == 'akaze':
+        descriptor = cv2.AKAZE_create()
+        
+    # get keypoints and descriptors
+    (kps, features) = descriptor.detectAndCompute(image, None)
+    return (kps, features)
