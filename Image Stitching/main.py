@@ -34,3 +34,8 @@ def detectAndDescribe(image, method=None):
     # get keypoints and descriptors
     (kps, features) = descriptor.detectAndCompute(image, None)
     return (kps, features)
+
+def plot_keypoint(greyImage, keypoint):
+    fig, ax = plt.figure()
+    ax.imshow(cv2.drawKeypoints(greyImage,keypoint,None,color=(0,255,0)))
+    plt.show()
