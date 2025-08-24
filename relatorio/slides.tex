@@ -1,0 +1,99 @@
+\documentclass{beamer}
+
+% --- PACOTES ---
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{graphicx}
+
+% --- TEMA E CORES ---
+% Você pode experimentar outros temas, como: Warsaw, Boadilla, Madrid, etc.
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+% --- INFORMAÇÕES DO TÍTULO ---
+\title[Panoramas]{MO446 - Visão Computacional \\ Projeto de Panoramas}
+\author{Luciana P. Nedel \and Rafael H. Bordini \and Flávio R. Wagner \and Jomi F. Hübner}
+\institute[UFRGS, Durham, FURB]{}
+\date{\today}
+
+\begin{document}
+
+% --- SLIDE DE TÍTULO ---
+\begin{frame}
+  \titlepage
+\end{frame}
+
+% --- SLIDE DE ROTEIRO (SUMÁRIO) ---
+\begin{frame}
+  \frametitle{Roteiro da Apresentação}
+  \tableofcontents
+\end{frame}
+
+% ===================================================================
+\section{Coleta das Imagens}
+% ===================================================================
+\begin{frame}
+  \frametitle{Etapa 1: Coleta das Imagens}
+  \begin{itemize}
+    \item<1-> Capturar um conjunto de imagens com sobreposição parcial (ex: 30-50%).
+    \item<2-> Manter o centro óptico da câmera o mais fixo possível.
+    \item<3-> Garantir boas condições de iluminação e foco.
+    \item<4-> Documentar o dispositivo e o local da captura.
+  \end{itemize}
+\end{frame}
+
+% ===================================================================
+\section{Detecção e Extração de Características}
+% ===================================================================
+\begin{frame}
+  \frametitle{Etapa 2: Detecção e Extração de Características}
+  \begin{itemize}
+    \item<1-> O objetivo é encontrar pontos de interesse (keypoints) em cada imagem.
+    \item<2-> Usamos algoritmos como SIFT, ORB ou AKAZE para detectar e descrever esses pontos.
+    \item<3-> \textbf{Exemplo:} Visualização dos keypoints detectados sobre uma imagem.
+  \end{itemize}
+  \begin{figure}
+    % Substitua 'placeholder.jpg' pelo nome do seu arquivo de imagem
+    % \includegraphics[width=0.7\textwidth]{placeholder.jpg}
+  \end{figure}
+\end{frame}
+
+% ===================================================================
+\section{Emparelhamento de Características}
+% ===================================================================
+\begin{frame}
+  \frametitle{Etapa 3: Emparelhamento de Características}
+  \begin{itemize}
+    \item<1-> Encontrar correspondências entre os keypoints de imagens adjacentes.
+    \item<2-> Utilizar um algoritmo de casamento, como \textit{Brute-Force Matcher}.
+    \item<3-> Aplicar filtros para remover casamentos incorretos, como o \textit{Ratio Test} de Lowe.
+  \end{itemize}
+\end{frame}
+
+% ===================================================================
+\section{Estimação de Homografia e Alinhamento}
+% ===================================================================
+\begin{frame}
+  \frametitle{Etapa 4: Estimação de Homografia e Alinhamento}
+  \begin{itemize}
+    \item<1-> A \textbf{homografia} é uma matriz 3x3 que mapeia os pontos de um plano de imagem para outro.
+    \item<2-> Usamos o algoritmo \textbf{RANSAC} para estimar uma homografia robusta, mesmo com \textit{outliers}.
+    \item<3-> Com a homografia, alinhamos (warp) uma imagem à perspectiva da outra.
+  \end{itemize}
+\end{frame}
+
+% ===================================================================
+\section{Composição e Blending}
+% ===================================================================
+\begin{frame}
+  \frametitle{Etapa 5: Composição e Blending}
+  \begin{itemize}
+    \item<1-> \textbf{Composição:} Unir todas as imagens alinhadas em um único "canvas".
+    \item<2-> \textbf{Blending:} Aplicar técnicas de suavização (ex: \textit{feathering}, \textit{multiband blending}) para tornar as emendas invisíveis.
+    \item<3-> O resultado é o panorama final!
+  \end{itemize}
+\end{frame}
+
+
+
+\end{document}
