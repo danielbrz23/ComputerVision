@@ -1,4 +1,4 @@
-# Computer Vision
+# Computer Vision - Criação de Panoramas com Image Stitching
 
 Este repositório reúne materiais, códigos e projetos da matéria de Visão Computacional da UNICAMP. O foco principal está em técnicas de processamento de imagens, extração de características, montagem de panoramas e aplicação de algoritmos clássicos da área.
 
